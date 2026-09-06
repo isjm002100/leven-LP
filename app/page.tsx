@@ -15,6 +15,7 @@ import {
   Target,
   UsersRound,
 } from 'lucide-react';
+import { MotionEffects } from './motion-effects';
 
 const lineUrl = 'https://lin.ee/QpY2NyTa';
 
@@ -42,7 +43,7 @@ function SectionHeading({
   lead?: React.ReactNode;
 }) {
   return (
-    <div className="section-heading">
+    <div className="section-heading" data-reveal>
       <p>{label}</p>
       <h2>{title}</h2>
       {lead && <div className="section-lead">{lead}</div>}
@@ -76,6 +77,7 @@ function LineButton({ sub = '質問だけでもOK' }: { sub?: string }) {
 export default function Home() {
   return (
     <main>
+      <MotionEffects />
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Leven トップへ">
           <span>FITNESS GYM</span>
@@ -94,6 +96,8 @@ export default function Home() {
       </header>
 
       <section className="hero" id="top">
+        <span className="hero-orb hero-orb-one" aria-hidden="true" />
+        <span className="hero-orb hero-orb-two" aria-hidden="true" />
         <div className="hero-copy">
           <p className="eyebrow">PERSONAL TRAINING × BODY CARE</p>
           <h1>
@@ -118,11 +122,16 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-visual" aria-label="トレーニング風景の画像配置予定エリア">
-          <div className="image-placeholder">
-            <span>PHOTO</span>
-            <p>メインビジュアル／お客様とトレーナー</p>
-          </div>
+        <div className="hero-visual">
+          <figure className="hero-photo">
+            <img
+              src="/images/leven-training.webp"
+              alt="Levenでパーソナルトレーニングを受ける女性"
+              fetchPriority="high"
+            />
+            <figcaption>PERSONAL TRAINING IN SHIBUYA</figcaption>
+          </figure>
+          <div className="floating-badge" aria-hidden="true"><span>GOOD</span><strong>MOVE!</strong></div>
           <div className="offer-card">
             <span>CIRCUIT COURSE</span>
             <strong>入会金 ¥10,000</strong>
@@ -141,21 +150,44 @@ export default function Home() {
         <div><strong>3<span>分</span></strong><span>渋谷駅から徒歩</span></div>
       </section>
 
+      <div className="motion-marquee" aria-hidden="true">
+        <div>
+          <span>MOVE BETTER</span><i>✦</i><span>FEEL BETTER</span><i>✦</i><span>LIVE BETTER</span><i>✦</i>
+          <span>MOVE BETTER</span><i>✦</i><span>FEEL BETTER</span><i>✦</i><span>LIVE BETTER</span><i>✦</i>
+        </div>
+      </div>
+
       <section className="worries section-shell">
         <SectionHeading
           label="DO YOU HAVE THESE WORRIES?"
           title={<>こんなお悩み、<em>抱えていませんか？</em></>}
         />
         <div className="worry-grid">
-          <article><span>01</span><p>マッサージに通っても<br />肩こりや腰の違和感を繰り返す</p></article>
-          <article><span>02</span><p>自己流の運動では<br />身体が思うように変わらない</p></article>
-          <article><span>03</span><p>ダイエットを始めても<br />いつもひとりで挫折してしまう</p></article>
-          <article><span>04</span><p>運動不足は気になるけれど<br />普通のジムは続く気がしない</p></article>
+          <article data-reveal className="delay-1"><span>01</span><p>マッサージに通っても<br />肩こりや腰の違和感を繰り返す</p></article>
+          <article data-reveal className="delay-2"><span>02</span><p>自己流の運動では<br />身体が思うように変わらない</p></article>
+          <article data-reveal className="delay-3"><span>03</span><p>ダイエットを始めても<br />いつもひとりで挫折してしまう</p></article>
+          <article data-reveal className="delay-4"><span>04</span><p>運動不足は気になるけれど<br />普通のジムは続く気がしない</p></article>
         </div>
         <div className="solution-copy">
           <span>その悩み、意志の弱さではなく</span>
           <strong>今のあなたに合う方法を、<br />選べていないだけかもしれません。</strong>
         </div>
+      </section>
+
+      <section className="photo-story section-shell" aria-label="Levenでのセッション風景">
+        <div className="photo-story-copy" data-reveal>
+          <p>WELCOME TO LEVEN</p>
+          <h2>がんばる場所を、<br /><em>ほっとできる場所へ。</em></h2>
+          <span>清潔感のあるプライベート空間で、会話を大切にしながら進めます。</span>
+        </div>
+        <figure className="story-photo story-photo-main" data-reveal>
+          <img src="/images/leven-bodycare.webp" alt="トレーナーによる丁寧なボディケア" loading="lazy" />
+          <figcaption>BODY CARE</figcaption>
+        </figure>
+        <figure className="story-photo story-photo-sub" data-reveal>
+          <img src="/images/leven-studio.webp" alt="明るく清潔感のあるLevenのトレーニング空間" loading="lazy" />
+          <figcaption>PRIVATE STUDIO</figcaption>
+        </figure>
       </section>
 
       <section className="courses" id="courses">
@@ -167,7 +199,7 @@ export default function Home() {
           />
 
           <div className="course-selector">
-            <article className="course-card personal-card">
+            <article className="course-card personal-card" data-reveal>
               <div className="course-number">COURSE <b>01</b></div>
               <div className="course-icon"><Sparkles aria-hidden="true" /></div>
               <p className="course-kicker">肩こり・腰の違和感・姿勢が気になる方へ</p>
@@ -178,12 +210,13 @@ export default function Home() {
                 <li><Check aria-hidden="true" />1回 60分</li>
                 <li><Check aria-hidden="true" />身体に合わせた個別設計</li>
               </ul>
+              <img className="course-card-photo" src="/images/leven-stretch.webp" alt="" loading="lazy" />
               <a href="#personal">詳しく見る <ArrowDown aria-hidden="true" /></a>
             </article>
 
             <div className="or-mark">OR</div>
 
-            <article className="course-card circuit-card">
+            <article className="course-card circuit-card delay-2" data-reveal>
               <div className="course-number">COURSE <b>02</b></div>
               <div className="course-icon"><UsersRound aria-hidden="true" /></div>
               <p className="course-kicker">ひとりだと続かない・とにかく痩せたい方へ</p>
@@ -194,6 +227,7 @@ export default function Home() {
                 <li><Check aria-hidden="true" />1回 50分</li>
                 <li><Check aria-hidden="true" />仲間と楽しく継続</li>
               </ul>
+              <img className="course-card-photo" src="/images/leven-training.webp" alt="" loading="lazy" />
               <a href="#circuit">詳しく見る <ArrowDown aria-hidden="true" /></a>
               <div className="mini-offer">10/31まで 入会金無料</div>
             </article>
@@ -203,11 +237,13 @@ export default function Home() {
 
       <section className="course-detail section-shell" id="personal">
         <div className="detail-grid">
-          <div className="detail-media">
-            <ImagePlaceholder label="整体・コンディショニング風景" detail="施術中の手元と自然な表情が分かる写真" />
+          <div className="detail-media" data-reveal>
+            <figure className="organic-photo">
+              <img src="/images/leven-bodycare.webp" alt="Levenで身体を整えるコンディショニングセッション" loading="lazy" />
+            </figure>
             <span className="vertical-label">PERSONAL COURSE</span>
           </div>
-          <div className="detail-copy">
+          <div className="detail-copy delay-2" data-reveal>
             <p className="detail-no">01 / PERSONAL</p>
             <h2>整えてから鍛えるから、<br /><em>身体の土台</em>から変えていける。</h2>
             <p>
@@ -230,11 +266,14 @@ export default function Home() {
 
       <section className="course-detail circuit-detail" id="circuit">
         <div className="section-shell detail-grid reversed">
-          <div className="detail-media">
-            <ImagePlaceholder label="少人数サーキット風景" detail="3〜4名で楽しく動いている臨場感のある写真" />
+          <div className="detail-media" data-reveal>
+            <div className="circuit-photo-collage">
+              <img src="/images/leven-studio.webp" alt="サーキットトレーニングを行うLevenのスタジオ" loading="lazy" />
+              <img src="/images/leven-training.webp" alt="トレーナーと楽しく身体を動かす様子" loading="lazy" />
+            </div>
             <span className="vertical-label">CIRCUIT COURSE</span>
           </div>
-          <div className="detail-copy">
+          <div className="detail-copy delay-2" data-reveal>
             <p className="detail-no">02 / SMALL GROUP</p>
             <h2>励まし合える仲間がいると、<br />運動はもっと<em>楽しく続く。</em></h2>
             <p>
@@ -257,7 +296,7 @@ export default function Home() {
 
       <section className="comparison section-shell">
         <SectionHeading label="COURSE COMPARISON" title={<>あなたに合うのは<em>どっち？</em></>} />
-        <div className="comparison-table" role="table" aria-label="コース比較表">
+        <div className="comparison-table" role="table" aria-label="コース比較表" data-reveal>
           <div className="comparison-row header-row" role="row">
             <div role="columnheader">比較ポイント</div>
             <div role="columnheader"><span>根本改善</span>パーソナル</div>
@@ -288,22 +327,26 @@ export default function Home() {
             lead="小さなジムだからこそできる、近い距離での丁寧なサポート。"
           />
           <div className="reason-grid">
-            <article>
+            <article data-reveal className="delay-1">
               <span>01</span><Award aria-hidden="true" />
               <h3>整体の知見を持つ<br />経験豊富なトレーナー</h3>
               <p>トレーナー歴7年。JTTMA（日本タイ古式マッサージ協会）の資格を活かし、運動だけではなく身体の状態から見つめます。</p>
             </article>
-            <article>
+            <article data-reveal className="delay-2">
               <span>02</span><HeartHandshake aria-hidden="true" />
               <h3>初心者・女性も安心の<br />アットホームな距離感</h3>
               <p>会員様の約70%が女性。初めての方にも分かりやすく、一人ひとりのペースに合わせて無理なく進めます。</p>
             </article>
-            <article>
+            <article data-reveal className="delay-3">
               <span>03</span><MapPin aria-hidden="true" />
               <h3>忙しくても通いやすい<br />渋谷駅徒歩3分</h3>
               <p>道玄坂の駅近立地。お仕事帰りやお出かけの前後にも立ち寄りやすく、習慣化を後押しします。</p>
             </article>
           </div>
+          <figure className="studio-banner" data-reveal>
+            <img src="/images/leven-studio.webp" alt="Levenの明るく開放的なトレーニングスペース" loading="lazy" />
+            <figcaption><span>PRIVATE SPACE</span><strong>人目を気にせず、<br />自分の身体に集中できる。</strong></figcaption>
+          </figure>
         </div>
       </section>
 
@@ -314,17 +357,17 @@ export default function Home() {
           lead="実際のお客様の写真・お声に差し替える前提のレイアウトです。"
         />
         <div className="results-grid">
-          <div className="review-panel">
+          <div className="review-panel" data-reveal>
             <div className="stars" aria-label="星5の評価">{[1, 2, 3, 4, 5].map((n) => <Star key={n} aria-hidden="true" />)}</div>
             <strong>Google口コミ 152件</strong>
             <p>評価 ★5.0</p>
             <small>※掲載時点の情報。公開前に最新の件数をご確認ください。</small>
           </div>
-          <div className="voice-card">
+          <div className="voice-card delay-1" data-reveal>
             <ImagePlaceholder label="お客様の声 01" detail="30代女性／根本改善コース" />
             <p>口コミ本文・お客様コメントを掲載予定</p>
           </div>
-          <div className="voice-card">
+          <div className="voice-card delay-2" data-reveal>
             <ImagePlaceholder label="お客様の声 02" detail="40代女性／サーキットコース" />
             <p>口コミ本文・お客様コメントを掲載予定</p>
           </div>
@@ -345,10 +388,13 @@ export default function Home() {
 
       <section className="trainer">
         <div className="section-shell trainer-grid">
-          <div className="trainer-photo">
-            <ImagePlaceholder label="トレーナー 関塚 純平" detail="自然光・上半身・親しみやすい表情のプロフィール写真" />
+          <div className="trainer-photo" data-reveal>
+            <figure>
+              <img src="/images/leven-stretch.webp" alt="お客様の身体に丁寧に向き合うLeven代表トレーナー" loading="lazy" />
+              <figcaption>JUMPEI SEKIZUKA / TRAINER</figcaption>
+            </figure>
           </div>
-          <div className="trainer-copy">
+          <div className="trainer-copy delay-2" data-reveal>
             <p className="detail-no">TRAINER</p>
             <h2>あなたの悩みに、<br />二人三脚で向き合います。</h2>
             <p>
@@ -373,7 +419,7 @@ export default function Home() {
           lead="すべて税込価格です。無理のないペースから始められます。"
         />
         <div className="price-grid">
-          <article className="price-card">
+          <article className="price-card" data-reveal>
             <div className="price-title"><Sparkles aria-hidden="true" /><div><span>PERSONAL</span><h3>根本改善コース</h3><p>マンツーマン・60分</p></div></div>
             <div className="price-list">
               {personalPrices.map(([frequency, amount, unit]) => (
@@ -381,7 +427,7 @@ export default function Home() {
               ))}
             </div>
           </article>
-          <article className="price-card featured-price">
+          <article className="price-card featured-price delay-2" data-reveal>
             <div className="campaign-ribbon">10/31まで 入会金10,000円 → 0円</div>
             <div className="price-title"><UsersRound aria-hidden="true" /><div><span>SMALL GROUP</span><h3>サーキットコース</h3><p>最大4名・50分</p></div></div>
             <div className="price-list">
@@ -402,10 +448,10 @@ export default function Home() {
             lead="まずはコースが決まっていなくても大丈夫です。"
           />
           <div className="flow-grid">
-            <article><span>STEP 1</span><MessageCircle aria-hidden="true" /><h3>LINEを追加</h3><p>ボタンからLeven公式LINEを友だち追加</p></article>
-            <article><span>STEP 2</span><Target aria-hidden="true" /><h3>希望を送信</h3><p>気になるコースとお悩みをメッセージ</p></article>
-            <article><span>STEP 3</span><CalendarCheck2 aria-hidden="true" /><h3>日時を相談</h3><p>空き状況をご案内し、体験日時を決定</p></article>
-            <article><span>STEP 4</span><Dumbbell aria-hidden="true" /><h3>体験へ</h3><p>ご来店後、身体に合うプランをご提案</p></article>
+            <article data-reveal className="delay-1"><span>STEP 1</span><MessageCircle aria-hidden="true" /><h3>LINEを追加</h3><p>ボタンからLeven公式LINEを友だち追加</p></article>
+            <article data-reveal className="delay-2"><span>STEP 2</span><Target aria-hidden="true" /><h3>希望を送信</h3><p>気になるコースとお悩みをメッセージ</p></article>
+            <article data-reveal className="delay-3"><span>STEP 3</span><CalendarCheck2 aria-hidden="true" /><h3>日時を相談</h3><p>空き状況をご案内し、体験日時を決定</p></article>
+            <article data-reveal className="delay-4"><span>STEP 4</span><Dumbbell aria-hidden="true" /><h3>体験へ</h3><p>ご来店後、身体に合うプランをご提案</p></article>
           </div>
           <div className="flow-cta"><LineButton sub="友だち追加後「体験希望」と送信" /></div>
         </div>
