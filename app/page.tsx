@@ -10,7 +10,6 @@ import {
   MapPin,
   MessageCircle,
   MoveRight,
-  Sparkles,
   Star,
   Target,
   UsersRound,
@@ -96,8 +95,6 @@ export default function Home() {
       </header>
 
       <section className="hero" id="top">
-        <span className="hero-orb hero-orb-one" aria-hidden="true" />
-        <span className="hero-orb hero-orb-two" aria-hidden="true" />
         <div className="hero-copy">
           <p className="eyebrow">PERSONAL TRAINING × BODY CARE</p>
           <h1>
@@ -131,7 +128,6 @@ export default function Home() {
             />
             <figcaption>PERSONAL TRAINING IN SHIBUYA</figcaption>
           </figure>
-          <div className="floating-badge" aria-hidden="true"><span>GOOD</span><strong>MOVE!</strong></div>
           <div className="offer-card">
             <span>CIRCUIT COURSE</span>
             <strong>入会金 ¥10,000</strong>
@@ -149,13 +145,6 @@ export default function Home() {
         <i />
         <div><strong>3<span>分</span></strong><span>渋谷駅から徒歩</span></div>
       </section>
-
-      <div className="motion-marquee" aria-hidden="true">
-        <div>
-          <span>MOVE BETTER</span><i>✦</i><span>FEEL BETTER</span><i>✦</i><span>LIVE BETTER</span><i>✦</i>
-          <span>MOVE BETTER</span><i>✦</i><span>FEEL BETTER</span><i>✦</i><span>LIVE BETTER</span><i>✦</i>
-        </div>
-      </div>
 
       <section className="worries section-shell">
         <SectionHeading
@@ -201,7 +190,6 @@ export default function Home() {
           <div className="course-selector">
             <article className="course-card personal-card" data-reveal>
               <div className="course-number">COURSE <b>01</b></div>
-              <div className="course-icon"><Sparkles aria-hidden="true" /></div>
               <p className="course-kicker">肩こり・腰の違和感・姿勢が気になる方へ</p>
               <h3>根本改善コース</h3>
               <p>整体 × パーソナルトレーニング</p>
@@ -218,7 +206,6 @@ export default function Home() {
 
             <article className="course-card circuit-card delay-2" data-reveal>
               <div className="course-number">COURSE <b>02</b></div>
-              <div className="course-icon"><UsersRound aria-hidden="true" /></div>
               <p className="course-kicker">ひとりだと続かない・とにかく痩せたい方へ</p>
               <h3>サーキットコース</h3>
               <p>最大4名の少人数グループ</p>
@@ -420,7 +407,7 @@ export default function Home() {
         />
         <div className="price-grid">
           <article className="price-card" data-reveal>
-            <div className="price-title"><Sparkles aria-hidden="true" /><div><span>PERSONAL</span><h3>根本改善コース</h3><p>マンツーマン・60分</p></div></div>
+            <div className="price-title"><div><span>PERSONAL</span><h3>根本改善コース</h3><p>マンツーマン・60分</p></div></div>
             <div className="price-list">
               {personalPrices.map(([frequency, amount, unit]) => (
                 <div key={frequency}><b>{frequency}</b><strong>{amount}</strong><small>{unit}</small></div>
@@ -429,7 +416,7 @@ export default function Home() {
           </article>
           <article className="price-card featured-price delay-2" data-reveal>
             <div className="campaign-ribbon">10/31まで 入会金10,000円 → 0円</div>
-            <div className="price-title"><UsersRound aria-hidden="true" /><div><span>SMALL GROUP</span><h3>サーキットコース</h3><p>最大4名・50分</p></div></div>
+            <div className="price-title"><div><span>SMALL GROUP</span><h3>サーキットコース</h3><p>最大4名・50分</p></div></div>
             <div className="price-list">
               {circuitPrices.map(([frequency, amount, unit]) => (
                 <div key={frequency}><b>{frequency}</b><strong>{amount}</strong><small>{unit}</small></div>
