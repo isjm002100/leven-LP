@@ -42,7 +42,7 @@ function SectionHeading({
   lead?: React.ReactNode;
 }) {
   return (
-    <div className="section-heading" data-reveal>
+    <div className="section-heading" data-reveal="headline">
       <p>{label}</p>
       <h2>{title}</h2>
       {lead && <div className="section-lead">{lead}</div>}
@@ -99,7 +99,7 @@ export default function Home() {
           <p className="eyebrow">PERSONAL TRAINING × BODY CARE</p>
           <h1>
             <span>ひとりでは続かなかった私に、</span>
-            <em>変われる場所</em>ができた。
+            <em className="brush-highlight">変われる場所</em>ができた。
           </h1>
           <p className="hero-lead">
             整体×パーソナルと、仲間と励む少人数サーキット。
@@ -125,9 +125,11 @@ export default function Home() {
               src="/images/leven-training.webp"
               alt="Levenでパーソナルトレーニングを受ける女性"
               fetchPriority="high"
+              data-parallax
             />
             <figcaption>PERSONAL TRAINING IN SHIBUYA</figcaption>
           </figure>
+          <p className="hero-photo-note">渋谷で、身体と習慣を整える。</p>
           <div className="offer-card">
             <span>CIRCUIT COURSE</span>
             <strong>入会金 ¥10,000</strong>
@@ -137,13 +139,13 @@ export default function Home() {
       </section>
 
       <section className="proof-strip" aria-label="実績">
-        <div><strong>152</strong><span>Google口コミ件数</span></div>
+        <div data-reveal="number"><strong>152</strong><span>Google口コミ件数</span></div>
         <i />
-        <div><strong>5.0</strong><span>Google口コミ評価</span></div>
+        <div data-reveal="number"><strong>5.0</strong><span>Google口コミ評価</span></div>
         <i />
-        <div><strong>7<span>年</span></strong><span>トレーナー歴</span></div>
+        <div data-reveal="number"><strong>7<span>年</span></strong><span>トレーナー歴</span></div>
         <i />
-        <div><strong>3<span>分</span></strong><span>渋谷駅から徒歩</span></div>
+        <div data-reveal="number"><strong>3<span>分</span></strong><span>渋谷駅から徒歩</span></div>
       </section>
 
       <section className="worries section-shell">
@@ -159,7 +161,7 @@ export default function Home() {
         </div>
         <div className="solution-copy">
           <span>その悩み、意志の弱さではなく</span>
-          <strong>今のあなたに合う方法を、<br />選べていないだけかもしれません。</strong>
+          <strong><mark>今のあなたに合う方法</mark>を、<br />選べていないだけかもしれません。</strong>
         </div>
       </section>
 
@@ -169,12 +171,14 @@ export default function Home() {
           <h2>がんばる場所を、<br /><em>ほっとできる場所へ。</em></h2>
           <span>清潔感のあるプライベート空間で、会話を大切にしながら進めます。</span>
         </div>
-        <figure className="story-photo story-photo-main" data-reveal>
-          <img src="/images/leven-bodycare.webp" alt="トレーナーによる丁寧なボディケア" loading="lazy" />
+        <figure className="story-photo story-photo-main" data-reveal="clip-left">
+          <span className="photo-index" aria-hidden="true">01</span>
+          <img src="/images/leven-bodycare.webp" alt="トレーナーによる丁寧なボディケア" loading="lazy" data-parallax />
           <figcaption>BODY CARE</figcaption>
         </figure>
-        <figure className="story-photo story-photo-sub" data-reveal>
-          <img src="/images/leven-studio.webp" alt="明るく清潔感のあるLevenのトレーニング空間" loading="lazy" />
+        <figure className="story-photo story-photo-sub" data-reveal="clip-right">
+          <span className="photo-index" aria-hidden="true">02</span>
+          <img src="/images/leven-studio.webp" alt="明るく清潔感のあるLevenのトレーニング空間" loading="lazy" data-parallax />
           <figcaption>PRIVATE STUDIO</figcaption>
         </figure>
       </section>
@@ -188,7 +192,7 @@ export default function Home() {
           />
 
           <div className="course-selector">
-            <article className="course-card personal-card" data-reveal>
+            <article className="course-card personal-card" data-reveal="from-left">
               <div className="course-number">COURSE <b>01</b></div>
               <p className="course-kicker">肩こり・腰の違和感・姿勢が気になる方へ</p>
               <h3>根本改善コース</h3>
@@ -204,7 +208,7 @@ export default function Home() {
 
             <div className="or-mark">OR</div>
 
-            <article className="course-card circuit-card delay-2" data-reveal>
+            <article className="course-card circuit-card delay-2" data-reveal="from-right">
               <div className="course-number">COURSE <b>02</b></div>
               <p className="course-kicker">ひとりだと続かない・とにかく痩せたい方へ</p>
               <h3>サーキットコース</h3>
@@ -226,7 +230,7 @@ export default function Home() {
         <div className="detail-grid">
           <div className="detail-media" data-reveal>
             <figure className="organic-photo">
-              <img src="/images/leven-bodycare.webp" alt="Levenで身体を整えるコンディショニングセッション" loading="lazy" />
+              <img src="/images/leven-bodycare.webp" alt="Levenで身体を整えるコンディショニングセッション" loading="lazy" data-parallax />
             </figure>
             <span className="vertical-label">PERSONAL COURSE</span>
           </div>
@@ -254,7 +258,7 @@ export default function Home() {
       <section className="course-detail circuit-detail" id="circuit">
         <div className="section-shell detail-grid reversed">
           <div className="detail-media" data-reveal>
-            <div className="circuit-photo-collage">
+            <div className="circuit-photo-collage" data-reveal="clip-right">
               <img src="/images/leven-studio.webp" alt="サーキットトレーニングを行うLevenのスタジオ" loading="lazy" />
               <img src="/images/leven-training.webp" alt="トレーナーと楽しく身体を動かす様子" loading="lazy" />
             </div>
@@ -330,8 +334,8 @@ export default function Home() {
               <p>道玄坂の駅近立地。お仕事帰りやお出かけの前後にも立ち寄りやすく、習慣化を後押しします。</p>
             </article>
           </div>
-          <figure className="studio-banner" data-reveal>
-            <img src="/images/leven-studio.webp" alt="Levenの明るく開放的なトレーニングスペース" loading="lazy" />
+          <figure className="studio-banner" data-reveal="clip-left">
+            <img src="/images/leven-studio.webp" alt="Levenの明るく開放的なトレーニングスペース" loading="lazy" data-parallax />
             <figcaption><span>PRIVATE SPACE</span><strong>人目を気にせず、<br />自分の身体に集中できる。</strong></figcaption>
           </figure>
         </div>
@@ -376,8 +380,8 @@ export default function Home() {
       <section className="trainer">
         <div className="section-shell trainer-grid">
           <div className="trainer-photo" data-reveal>
-            <figure>
-              <img src="/images/leven-stretch.webp" alt="お客様の身体に丁寧に向き合うLeven代表トレーナー" loading="lazy" />
+            <figure data-reveal="clip-right">
+              <img src="/images/leven-stretch.webp" alt="お客様の身体に丁寧に向き合うLeven代表トレーナー" loading="lazy" data-parallax />
               <figcaption>JUMPEI SEKIZUKA / TRAINER</figcaption>
             </figure>
           </div>
