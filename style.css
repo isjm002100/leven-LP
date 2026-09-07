@@ -1160,6 +1160,10 @@ h1 em {
   align-items: center;
   gap: clamp(3rem, 7vw, 7rem);
 }
+.detail-grid.reversed {
+  grid-template-columns: 1.18fr 0.82fr;
+  gap: clamp(3rem, 5vw, 5rem);
+}
 .detail-media {
   position: relative;
 }
@@ -1276,6 +1280,9 @@ h1 em {
   background: #273d2b;
   color: #f7f8f2;
 }
+.circuit-detail > .section-shell {
+  padding-block: 0;
+}
 .reversed .detail-media {
   order: 2;
 }
@@ -1307,6 +1314,12 @@ h1 em {
   height: 43%;
   border: 8px solid #273d2b;
   clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
+}
+.motion-ready
+  .detail-media.is-visible
+  .circuit-photo-collage[data-reveal='clip-right'] {
+  clip-path: inset(0);
+  scale: 1;
 }
 .circuit-photo-collage:hover img:first-child {
   transform: translate(-4px, -5px) rotate(-1deg);
@@ -2389,6 +2402,10 @@ footer > p:last-child {
   .price-grid,
   .access-grid {
     grid-template-columns: 1fr;
+  }
+  .detail-grid.reversed {
+    grid-template-columns: 1fr;
+    gap: clamp(3rem, 7vw, 7rem);
   }
   .course-card {
     min-height: 465px;
